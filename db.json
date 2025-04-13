@@ -1,0 +1,44 @@
+{
+  "usuarios": [
+    {
+      "id": 2,
+      "nombre": "Jose",
+      "email": "a@b",
+      "edad": 35,
+      "password": "123456789",
+      "confirmarPassword": "123456789"
+    },
+    {
+      "nombre": "Jose",
+      "email": "a@v",
+      "edad": 32,
+      "password": "123456",
+      "confirmarPassword": "123456",
+      "id": 4
+    },
+    {
+      "nombre": "Carlos R",
+      "email": "example@example.com",
+      "edad": 36,
+      "password": "123456",
+      "confirmarPassword": "123456",
+      "id": 5
+    },
+    {
+      "id": 6,
+      "nombre": "Pedro",
+      "email": "c@d",
+      "edad": 45,
+      "password": "123456",
+      "confirmarPassword": "123456"
+    },
+    {
+      "id": 7,
+      "nombre": "Maria Perez",
+      "email": "maria.perez@example.com",
+      "edad": 20,
+      "password": "123456",
+      "confirmarPassword": "123456"
+    }
+  ]
+}
