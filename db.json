@@ -39,6 +39,27 @@
       "edad": 20,
       "password": "123456",
       "confirmarPassword": "123456"
+    },
+    {
+      "nombre": "Usuario de prueba",
+      "email": "test@test.com",
+      "password": "123456",
+      "confirmarPassword": "123456",
+      "id": 8
+    },
+    {
+      "nombre": "C",
+      "email": "test@d",
+      "password": "123456",
+      "confirmarPassword": "123456",
+      "id": 9
+    },
+    {
+      "nombre": "Yup",
+      "email": "Yup@yup",
+      "password": "123456",
+      "confirmarPassword": "123456",
+      "id": 10
     }
   ]
 }

@@ -1,32 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { listarUsuarios } from "../../services/UserService";
+import React from "react";
 import { Spinner, Table } from "react-bootstrap";
+import { useUsuarios } from "../../hooks";
 
 const Usuarios = () => {
-  const [usuarios, setUsuarios] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const getUsuarios = async () => {
-      try {
-        const response = await listarUsuarios();
-        console.log(response.data);
-        setUsuarios(response.data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false)
-      }
-
-    };
-    getUsuarios();
-  }, []);
+  const { usuarios, loading } = useUsuarios();
 
   return (
     <div>
       { loading && <Spinner animation="grow" />}
       { !loading && <Table striped bordered hover>
-        <thead>
+        <thead style={{width:'100%'}}>    
           <tr>
             <th>#</th>
             <th>Nombre</th>
@@ -58,3 +41,4 @@ const Usuarios = () => {
 };
 
 export default Usuarios;
+
