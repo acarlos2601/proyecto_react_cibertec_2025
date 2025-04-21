@@ -12,54 +12,66 @@
       "nombre": "Jose",
       "email": "a@v",
       "edad": 32,
-      "password": "123456",
-      "confirmarPassword": "123456",
-      "id": 4
+      "password": "123456abc",
+      "id": 4,
+      "rol": "docente",
+      "genero": "masculino"
     },
     {
       "nombre": "Carlos R",
       "email": "example@example.com",
       "edad": 36,
-      "password": "123456",
-      "confirmarPassword": "123456",
-      "id": 5
+      "password": "123456abc",
+      "id": 5,
+      "rol": "estudiante",
+      "genero": "masculino"
     },
     {
       "id": 6,
       "nombre": "Pedro",
       "email": "c@d",
       "edad": 45,
-      "password": "123456",
-      "confirmarPassword": "123456"
+      "password": "123456abc",
+      "rol": "docente",
+      "genero": "masculino"
     },
     {
       "id": 7,
       "nombre": "Maria Perez",
       "email": "maria.perez@example.com",
       "edad": 20,
-      "password": "123456",
-      "confirmarPassword": "123456"
+      "password": "123456abc",
+      "rol": "estudiante",
+      "genero": "femenino"
     },
     {
-      "nombre": "Usuario de prueba",
-      "email": "test@test.com",
-      "password": "123456",
-      "confirmarPassword": "123456",
-      "id": 8
+      "nombre": "Usuario 4",
+      "email": "test@usuario4",
+      "edad": 18,
+      "rol": "docente",
+      "password": "abc123",
+      "confirmarPassword": "abc123",
+      "genero": "femenino",
+      "id": 14
     },
     {
-      "nombre": "C",
-      "email": "test@d",
-      "password": "123456",
-      "confirmarPassword": "123456",
-      "id": 9
+      "nombre": "test-reutilizable",
+      "email": "reutilizable@test",
+      "edad": 30,
+      "rol": "estudiante",
+      "password": "abc123",
+      "genero": "masculino",
+      "id": 15
     },
     {
-      "nombre": "Yup",
-      "email": "Yup@yup",
-      "password": "123456",
-      "confirmarPassword": "123456",
-      "id": 10
+      "nombre": "Carlos",
+      "email": "abc@efg",
+      "edad": 32,
+      "rol": "docente",
+      "password": "123456a",
+      "confirmarPassword": "123456a",
+      "genero": "masculino",
+      "id": 16
     }
   ]
 }

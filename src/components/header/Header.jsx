@@ -28,9 +28,16 @@ export const Header = () => {
                 Buscar producto
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link as={NavLink} to="/usuarios" >
-              Usuarios
-            </Nav.Link>
+            <NavDropdown title="Usuarios" id="navbarScrollingDropdown">
+              <NavDropdown.Item as={NavLink} to={'/listar-usuario'} >Listar Usuarios</NavDropdown.Item>
+              <NavDropdown.Item as={NavLink} to={'/crear-usuario'} >
+                Crear Usuario
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item >
+                Buscar Usuario
+              </NavDropdown.Item>
+            </NavDropdown>
           </Nav>
           <Button variant="outline-success">Login</Button>
         </Navbar.Collapse>

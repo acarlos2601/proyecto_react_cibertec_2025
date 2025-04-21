@@ -1,9 +1,39 @@
-import React from "react";
-import { Spinner, Table } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Spinner, Table } from "react-bootstrap";
 import { useUsuarios } from "../../hooks";
+import { ModalComponent } from "../../utils";
+import FormularioUsuario from "../../components/formularioUsuario";
+import { actualizarUsuario } from "../../services/UserService";
 
 const Usuarios = () => {
-  const { usuarios, loading } = useUsuarios();
+  const { usuarios, loading, setUsuarios } = useUsuarios();
+  const [showModal, setShowModal]=useState(false)
+  const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null)
+
+  const onEditUsuario = async (formulario) =>{
+        const {data, error} = await actualizarUsuario(formulario.id,formulario)
+
+        if (error) console.error(error);
+        else {
+            console.log(data);
+            onHideModal();
+            //reload(); //opcion 1
+            
+            const nuevoArray = usuarios.filter((usuario) => usuario.id!== formulario.id )
+            nuevoArray.push(formulario)
+            setUsuarios(nuevoArray) //opcion 2
+        }
+  }
+
+  const onClickEditar = (usuario) => {
+    setUsuarioSeleccionado(usuario)
+    setShowModal(true)
+  }
+
+  const onHideModal = () =>{
+    setUsuarioSeleccionado(null)
+    setShowModal(false)
+  }
 
   return (
     <div>
@@ -15,6 +45,9 @@ const Usuarios = () => {
             <th>Nombre</th>
             <th>Correo</th>
             <th>Edad</th>
+            <th>Genero</th>
+            <th>Rol</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -26,6 +59,14 @@ const Usuarios = () => {
                   <td>{usuario.nombre}</td>
                   <td>{usuario.email}</td>
                   <td>{usuario.edad}</td>
+                  <td>{usuario.genero || 'No registrado'}</td>
+                  <td>{usuario.rol || 'No registrado'}</td>
+                  <td> 
+                    <div style={{display:'flex', justifyContent:"center", columnGap:'20px'}}>
+                        <Button onClick={()=>onClickEditar(usuario)} > Editar </Button>
+                        <Button variant="danger" > Eliminar </Button>
+                    </div>
+                  </td>
                 </tr>
               );
             })
@@ -36,6 +77,16 @@ const Usuarios = () => {
           )}
         </tbody>
       </Table>}
+
+      <ModalComponent show={showModal} 
+      title={'Crear Usuarios'} 
+      onHide={()=>onHideModal()} 
+      noButtons={true} >
+        <div className="modalFormularioUsuario">
+            <FormularioUsuario isCrear={false} initialValues={usuarioSeleccionado} onEnviar={onEditUsuario} />
+        </div>
+        
+      </ModalComponent>
     </div>
   );
 };

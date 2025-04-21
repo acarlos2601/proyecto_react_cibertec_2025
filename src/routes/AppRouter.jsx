@@ -1,11 +1,11 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from '../pages/Home'
-import Login from '../pages/Login'
 import Productos from '../pages/Productos'
 import { CustomLayout, DefaultLayout } from '../templates'
 import NotFound from '../pages/NotFound'
 import Usuarios from '../pages/Usuarios'
+import CrearUsuario from '../pages/CrearUsuario'
 
 const AppRouter = () => {
   return (
@@ -13,9 +13,9 @@ const AppRouter = () => {
         <Routes>
             <Route element={<DefaultLayout />} >
                 <Route path='/' element={ <Home/> } />
-                <Route path='/login' element={ <Login /> } />
+                <Route path='/crear-usuario' element={ <CrearUsuario /> } />
                 <Route path='/productos' element = { <Productos /> } /> 
-                <Route path='/usuarios'  element = { <Usuarios /> } />
+                <Route path='/listar-usuario'  element = { <Usuarios /> } />
             </Route>
 
             <Route element={<CustomLayout /> } >

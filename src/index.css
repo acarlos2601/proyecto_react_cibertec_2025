@@ -54,3 +54,21 @@ code {
   align-content: center;
   text-align: center;
 }
+
+.modalFormularioUsuario{
+  padding: 20px;
+  background-color: #b2e5ac72;
+  border-radius: 20px;
+}
+
+.contenedorFormularioCrear{
+  justify-self: center;
+  align-self: center;
+  width: 50%;
+  min-width: 400px;
+  text-align: start;
+}
+
+#formUsuario > label{
+  margin-top: 15px;
+}

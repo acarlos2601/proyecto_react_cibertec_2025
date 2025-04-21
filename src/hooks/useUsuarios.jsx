@@ -22,7 +22,8 @@ const useUsuarios = () => {
     usuarios,
     error,
     loading,
-    reload: cargarUsuarios
+    reload: cargarUsuarios,
+    setUsuarios
   };
 };
 
