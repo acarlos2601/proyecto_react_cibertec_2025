@@ -6,6 +6,8 @@ import { CustomLayout, DefaultLayout } from '../templates'
 import NotFound from '../pages/NotFound'
 import Usuarios from '../pages/Usuarios'
 import CrearUsuario from '../pages/CrearUsuario'
+import { Provider } from 'react-redux'
+import usuarioStore from '../store/UsuarioStore/createStore'
 
 const AppRouter = () => {
   return (
@@ -15,7 +17,11 @@ const AppRouter = () => {
                 <Route path='/' element={ <Home/> } />
                 <Route path='/crear-usuario' element={ <CrearUsuario /> } />
                 <Route path='/productos' element = { <Productos /> } /> 
-                <Route path='/listar-usuario'  element = { <Usuarios /> } />
+                <Route path='/listar-usuario'  element = { 
+                    <Provider store={usuarioStore} >
+                        <Usuarios /> 
+                    </Provider>
+                    } />
             </Route>
 
             <Route element={<CustomLayout /> } >

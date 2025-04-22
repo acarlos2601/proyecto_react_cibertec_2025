@@ -1,28 +1,37 @@
-import React, { useState } from "react";
-import { Button, Spinner, Table } from "react-bootstrap";
-import { useUsuarios } from "../../hooks";
+import React, { useEffect, useState } from "react";
+import { Alert, Button, Spinner, Table } from "react-bootstrap";
+// import { useUsuarios } from "../../hooks";
 import { ModalComponent } from "../../utils";
 import FormularioUsuario from "../../components/formularioUsuario";
-import { actualizarUsuario } from "../../services/UserService";
+// import { actualizarUsuario } from "../../services/UserService";
+import { useDispatch, useSelector } from "react-redux";
+import fetchUsuario from "../../store/UsuarioStore/usuarioAction";
 
 const Usuarios = () => {
-  const { usuarios, loading, setUsuarios } = useUsuarios();
+//   const { usuarios, loading, setUsuarios } = useUsuarios();
   const [showModal, setShowModal]=useState(false)
   const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null)
+  const dispatch = useDispatch();
+  const { usuarios, loading, error } = useSelector( (state) => state.usuarios )
 
+
+  useEffect(() => {
+    dispatch(fetchUsuario())
+  }, [dispatch])
+  
   const onEditUsuario = async (formulario) =>{
-        const {data, error} = await actualizarUsuario(formulario.id,formulario)
+        // const {data, error} = await actualizarUsuario(formulario.id,formulario)
 
-        if (error) console.error(error);
-        else {
-            console.log(data);
-            onHideModal();
-            //reload(); //opcion 1
+        // if (error) console.error(error);
+        // else {
+        //     console.log(data);
+        //     onHideModal();
+        //     //reload(); //opcion 1
             
-            const nuevoArray = usuarios.filter((usuario) => usuario.id!== formulario.id )
-            nuevoArray.push(formulario)
-            setUsuarios(nuevoArray) //opcion 2
-        }
+        //     const nuevoArray = usuarios.filter((usuario) => usuario.id!== formulario.id )
+        //     nuevoArray.push(formulario)
+        //     setUsuarios(nuevoArray) //opcion 2
+        // }
   }
 
   const onClickEditar = (usuario) => {
@@ -51,7 +60,7 @@ const Usuarios = () => {
           </tr>
         </thead>
         <tbody>
-          {usuarios.length > 0 ? (
+          {usuarios && usuarios.length > 0 ? (
             usuarios.map((usuario, index) => {
               return (
                 <tr key={index}>
@@ -72,11 +81,14 @@ const Usuarios = () => {
             })
           ) : (
             <tr>
-              <td colSpan={4}>No se encontraron registros</td>
+              <td colSpan={7}>No se encontraron registros</td>
             </tr>
           )}
         </tbody>
       </Table>}
+      {error && <Alert variant={"danger"}>
+          {error}
+        </Alert>}
 
       <ModalComponent show={showModal} 
       title={'Crear Usuarios'} 
