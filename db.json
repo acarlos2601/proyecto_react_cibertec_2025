@@ -11,11 +11,12 @@
     {
       "nombre": "Jose",
       "email": "a@v",
-      "edad": 32,
-      "password": "123456abc",
+      "edad": 20,
+      "password": "abc123",
       "id": 4,
-      "rol": "docente",
-      "genero": "masculino"
+      "rol": "estudiante",
+      "genero": "masculino",
+      "confirmarPassword": "abc123"
     },
     {
       "nombre": "Carlos R",
@@ -73,5 +74,12 @@
       "genero": "masculino",
       "id": 16
     }
-  ]
+  ],
+  "productos":[{
+    "id":1,
+    "nombre":"Samsung Galaxy s24",
+    "categoria":"Celular",
+    "precio": 4500,
+    "moneda":"PEN"
+  }]
 }

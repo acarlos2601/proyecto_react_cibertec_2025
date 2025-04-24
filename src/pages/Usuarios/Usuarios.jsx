@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Alert, Button, Spinner, Table } from "react-bootstrap";
-// import { useUsuarios } from "../../hooks";
 import { ModalComponent } from "../../utils";
 import FormularioUsuario from "../../components/formularioUsuario";
 // import { actualizarUsuario } from "../../services/UserService";
 import { useDispatch, useSelector } from "react-redux";
-import fetchUsuario from "../../store/UsuarioStore/usuarioAction";
+import { fetchUser, removeSelectedUser, selectUser, updateUser } from "../../store/UsuarioStore/usuarioAction";
 
 const Usuarios = () => {
 //   const { usuarios, loading, setUsuarios } = useUsuarios();
   const [showModal, setShowModal]=useState(false)
-  const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null)
+//   const [usuarioSeleccionado, setUsuarioSeleccionado] = useState(null)
   const dispatch = useDispatch();
-  const { usuarios, loading, error } = useSelector( (state) => state.usuarios )
+  const { usuarios, usuarioSeleccionado, loading, error } = useSelector( (state) => state.usuarios )
 
 
   useEffect(() => {
-    dispatch(fetchUsuario())
+    dispatch(fetchUser())
   }, [dispatch])
   
   const onEditUsuario = async (formulario) =>{
@@ -32,15 +31,17 @@ const Usuarios = () => {
         //     nuevoArray.push(formulario)
         //     setUsuarios(nuevoArray) //opcion 2
         // }
+        dispatch(updateUser(formulario))
+        onHideModal()
   }
 
   const onClickEditar = (usuario) => {
-    setUsuarioSeleccionado(usuario)
+    dispatch(selectUser(usuario))
     setShowModal(true)
   }
 
   const onHideModal = () =>{
-    setUsuarioSeleccionado(null)
+    dispatch(removeSelectedUser())
     setShowModal(false)
   }
 

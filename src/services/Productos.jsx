@@ -1,9 +1,9 @@
-import api from "./api";
+import { baseUrl, manejoRespuesta } from "./api";
 
-export const listarProductos = () => api.get("/productos")
+export const listarProductos = () => manejoRespuesta(baseUrl.get("/productos"))
 
-export const crearProductos = (data) => api.post("/productos",data)
+export const crearProductos = (data) => manejoRespuesta(baseUrl.post("/productos",data))
 
-export const actualizarProductos = (id,data) => api.put(`/productos/${id}`,data)
+export const actualizarProductos = (id,data) => manejoRespuesta(baseUrl.put(`/productos/${id}`,data))
 
-export const eliminarProducto = (id) => api.delete(`/productos/${id}`)
+export const eliminarProducto = (id) => manejoRespuesta(baseUrl.delete(`/productos/${id}`))
